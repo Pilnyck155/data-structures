@@ -13,6 +13,9 @@ public class ArrayQueue implements Queue{
 
     @Override
     public void enqueue(Object value) {
+        if (value == null){
+            throw new IllegalArgumentException("Null are not supported!");
+        }
         array[size] = value;
         size++;
     }
@@ -24,16 +27,12 @@ public class ArrayQueue implements Queue{
         if (isEmpty()){
             throw new IllegalStateException("Queue is empty");
         }
-
-        Object[] newArray = new Object[array.length-1];
-        int index = 0;
-        for (int i = 1; i < array.length-1; i++) {
-            newArray[index] = array[i];
-            index++;
-        }
         Object dequeueValue = array[0];
+        for (int i = 0; i < array.length-1; i++) {
+            array[i] = array[i+1];
+        }
+
         size--;
-        array = newArray;
         return dequeueValue;
     }
 
@@ -58,6 +57,9 @@ public class ArrayQueue implements Queue{
 
     @Override
     public boolean contains(Object value) {
+        if (value == null){
+            throw new IllegalArgumentException("Null are not supported!");
+        }
         for (int i = 0; i < array.length; i++) {
             if (value.equals(array[i])){
                 return true;
@@ -68,22 +70,26 @@ public class ArrayQueue implements Queue{
 
     @Override
     public void clear() {
+        for (int i = 0; i < size-1; i++) {
+            array[i] = null;
+        }
         size = 0;
     }
 
     public String toString(){
-        String queueArray ="[";
+        StringBuilder builder = new StringBuilder();
+        builder.append("[");
         int count = 1;
         for (int i = 0; i < array.length-1; i++) {
             if (array[i] != null){
-                queueArray += array[i];
+                builder.append(array[i]);
                 if(count != size){
-                    queueArray += ", ";
+                    builder.append(", ");
                     count++;
                 }
             }
         }
-        queueArray +="]";
-        return queueArray;
+        builder.append("]");
+        return builder.toString();
     }
 }
