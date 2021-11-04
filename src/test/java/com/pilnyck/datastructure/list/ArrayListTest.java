@@ -55,7 +55,7 @@ public class ArrayListTest {
         arrayList.add("C");
 
         assertThrows(IndexOutOfBoundsException.class, () -> {
-            arrayList.add("D", -1);
+            arrayList.add("D", -32_000);
         });
     }
 
@@ -91,7 +91,7 @@ public class ArrayListTest {
         arrayList.add("C");
 
         assertThrows(IndexOutOfBoundsException.class, () ->{
-            arrayList.get(-5);
+            arrayList.get(-50);
         });
     }
 
