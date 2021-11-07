@@ -7,9 +7,6 @@ public class ArrayQueue implements Queue{
     public ArrayQueue(){
         array = new Object[10];
     }
-//    public ArrayQueue(int initialSize){
-//        array = new Object[initialSize];
-//    }
 
     @Override
     public void enqueue(Object value) {
