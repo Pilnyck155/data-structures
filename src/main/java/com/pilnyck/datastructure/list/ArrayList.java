@@ -12,23 +12,19 @@ public class ArrayList implements List{
 
     @Override
     public void add(Object value) {
-        //increaseSize();
-        //arrayList[size] = value;
-        //size++;
         add(value, size);
     }
 
     @Override
     public void add(Object value, int index) {
         if (index < 0 || index > size()){
-            throw new IndexOutOfBoundsException("Index out of area of list");
+            throw new IllegalStateException("Index out of area of list");
         }
         increaseSize();
-
         for (int i = size; i > index; i--) {
             arrayList[i] = arrayList[i-1];
         }
-        arrayList[size] = value;
+        arrayList[index] = value;
         size++;
     }
 
@@ -135,7 +131,7 @@ public class ArrayList implements List{
     }
 
     public String toString(){
-        StringJoiner stringJoiner = new StringJoiner(", " , "[", "]");
+        StringJoiner stringJoiner = new StringJoiner("," , "[", "]");
         for (int i = 0; i <size(); i++) {
             stringJoiner.add(arrayList[i].toString());
         }
