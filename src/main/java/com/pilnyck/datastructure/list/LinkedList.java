@@ -135,7 +135,6 @@ public class LinkedList implements List{
             }
             return currentNode;
         }
-        //return null;
     }
 
     public String toString(){
