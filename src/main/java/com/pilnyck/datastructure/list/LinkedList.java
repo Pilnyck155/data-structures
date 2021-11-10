@@ -142,8 +142,14 @@ public class LinkedList implements List{
         StringJoiner stringJoiner = new StringJoiner(",", "[", "]");
         Node currentNode = head;
         for (int i = 0; i < size; i++) {
-            stringJoiner.add(currentNode.value.toString());
-            currentNode = currentNode.next;
+            try {
+                stringJoiner.add(currentNode.value.toString());
+                currentNode = currentNode.next;
+            }catch (NullPointerException exception){
+                exception.printStackTrace();
+                currentNode = currentNode.next;
+            }
+
         }
         return stringJoiner.toString();
     }

@@ -8,10 +8,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public abstract class AbstractListTest {
-    private List list;
+    public List list;
 
     @BeforeEach
-    public void before(){
+    protected void before(){
         list = getList();
     }
 
@@ -298,5 +298,16 @@ public abstract class AbstractListTest {
         String expected = "[A,B,C,D]";
 
         assertEquals(expected, actual);
+    }
+    @DisplayName("test toString method work correctly with null value")
+    @Test
+    public void testToStringMethodWithNullValue(){
+        list.add("A");
+        list.add("B");
+        list.add("C");
+        list.add(null);
+        list.add("D");
+
+        System.out.println(list.toString());
     }
 }

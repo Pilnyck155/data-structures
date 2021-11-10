@@ -17,7 +17,7 @@ public class ArrayList implements List{
 
     @Override
     public void add(Object value, int index) {
-        if (index < 0 || index > size()){
+        if (index < 0 || index > size){
             throw new IllegalStateException("Index out of area of list");
         }
         increaseSize();
@@ -30,7 +30,7 @@ public class ArrayList implements List{
 
     @Override
     public Object remove(int index) {
-        if (index < 0 || index > size()-1){
+        if (index < 0 || index > size-1){
             throw new IndexOutOfBoundsException("Index out of area of list");
         }
         for (int i = 0; i < arrayList.length; i++) {
