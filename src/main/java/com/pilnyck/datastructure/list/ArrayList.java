@@ -134,12 +134,15 @@ public class ArrayList implements List, Iterable{
     public String toString(){
         StringJoiner stringJoiner = new StringJoiner("," , "[", "]");
         //ТУТ МАЄ БУТИ ВАШ ІТЕРАТОР
+        ArrayIterator arrayIterator = new ArrayIterator();
+
 
         for (int i = 0; i <size(); i++) {
             stringJoiner.add(arrayList[i].toString());
         }
         return stringJoiner.toString();
     }
+
 
     @Override
     public Iterator iterator() {

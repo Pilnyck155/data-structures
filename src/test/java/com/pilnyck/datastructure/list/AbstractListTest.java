@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Iterator;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -312,15 +314,19 @@ public abstract class AbstractListTest {
     }
 
 
-    @DisplayName("test iterator work correctly")
+    @DisplayName("test list iterator work correctly")
     @Test
     public void testIterator(){
-        list.add("A");
-        list.add("B");
-        list.add("C");
-        list.add("D");
-
-
-        System.out.println(list.toString());
+        LinkedList linkedList = new LinkedList();
+        linkedList.add("A");
+        linkedList.add("B");
+        linkedList.add("C");
+        linkedList.add("D");
+        Iterator iterator = linkedList.iterator();
+        while (iterator.hasNext()){
+            Object o = iterator.next();
+            System.out.println(o);
+        }
+        //System.out.println(list.toString());
     }
 }

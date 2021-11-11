@@ -8,6 +8,7 @@ public class LinkedList implements List, Iterable{
     Node head;
     Node tail;
     int size;
+    private Object Iterator;
 
     @Override
     public void add(Object value) {
@@ -157,11 +158,13 @@ public class LinkedList implements List, Iterable{
         return stringJoiner.toString();
     }
 
+
     @Override
     public Iterator iterator() {
         return new LinkedIterator();
     }
     private class LinkedIterator implements Iterator{
+        Node currentNode = head;
         private int index = 0;
         @Override
         public boolean hasNext() {
@@ -170,7 +173,8 @@ public class LinkedList implements List, Iterable{
 
         @Override
         public Object next() {
-            Object value = head.value;
+            Node currentNode = getNode(index);
+            Object value = currentNode.value;
             index++;
             return value;
         }
