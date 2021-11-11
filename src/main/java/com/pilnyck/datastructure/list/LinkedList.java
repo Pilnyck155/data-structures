@@ -1,8 +1,9 @@
 package com.pilnyck.datastructure.list;
 
+import java.util.Iterator;
 import java.util.StringJoiner;
 
-public class LinkedList implements List{
+public class LinkedList implements List, Iterable{
 
     Node head;
     Node tail;
@@ -140,6 +141,9 @@ public class LinkedList implements List{
     public String toString(){
         StringJoiner stringJoiner = new StringJoiner(",", "[", "]");
         Node currentNode = head;
+        //ТУТ МАЄ БУТИ ВАШ ІТЕРАТОР
+
+
         for (int i = 0; i < size; i++) {
             try {
                 stringJoiner.add(currentNode.value.toString());
@@ -151,5 +155,24 @@ public class LinkedList implements List{
 
         }
         return stringJoiner.toString();
+    }
+
+    @Override
+    public Iterator iterator() {
+        return new LinkedIterator();
+    }
+    private class LinkedIterator implements Iterator{
+        private int index = 0;
+        @Override
+        public boolean hasNext() {
+            return index < size;
+        }
+
+        @Override
+        public Object next() {
+            Object value = head.value;
+            index++;
+            return value;
+        }
     }
 }

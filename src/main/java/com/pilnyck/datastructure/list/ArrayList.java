@@ -1,8 +1,9 @@
 package com.pilnyck.datastructure.list;
 
+import java.util.Iterator;
 import java.util.StringJoiner;
 
-public class ArrayList implements List{
+public class ArrayList implements List, Iterable{
     private int size = 0;
     Object[] arrayList;
 
@@ -132,9 +133,31 @@ public class ArrayList implements List{
 
     public String toString(){
         StringJoiner stringJoiner = new StringJoiner("," , "[", "]");
+        //ТУТ МАЄ БУТИ ВАШ ІТЕРАТОР
+
         for (int i = 0; i <size(); i++) {
             stringJoiner.add(arrayList[i].toString());
         }
         return stringJoiner.toString();
+    }
+
+    @Override
+    public Iterator iterator() {
+        return new ArrayIterator();
+    }
+
+    private class ArrayIterator implements Iterator{
+        private int index = 0;
+        @Override
+        public boolean hasNext() {
+            return index < size;
+        }
+
+        @Override
+        public Object next() {
+            Object value = arrayList[index];
+            index++;
+            return value;
+        }
     }
 }

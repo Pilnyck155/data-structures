@@ -310,4 +310,17 @@ public abstract class AbstractListTest {
 
         System.out.println(list.toString());
     }
+
+
+    @DisplayName("test iterator work correctly")
+    @Test
+    public void testIterator(){
+        list.add("A");
+        list.add("B");
+        list.add("C");
+        list.add("D");
+
+
+        System.out.println(list.toString());
+    }
 }
