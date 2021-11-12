@@ -8,7 +8,6 @@ public class LinkedList implements List, Iterable{
     Node head;
     Node tail;
     int size;
-    private Object Iterator;
 
     @Override
     public void add(Object value) {
@@ -142,18 +141,14 @@ public class LinkedList implements List, Iterable{
     public String toString(){
         StringJoiner stringJoiner = new StringJoiner(",", "[", "]");
         Node currentNode = head;
-        //ТУТ МАЄ БУТИ ВАШ ІТЕРАТОР
-
-
-        for (int i = 0; i < size; i++) {
-            try {
-                stringJoiner.add(currentNode.value.toString());
+        for (Object obj: this) {
+            try{
+                stringJoiner.add(obj.toString());
                 currentNode = currentNode.next;
             }catch (NullPointerException exception){
-                exception.printStackTrace();
+                stringJoiner.add(null);
                 currentNode = currentNode.next;
             }
-
         }
         return stringJoiner.toString();
     }
@@ -164,7 +159,6 @@ public class LinkedList implements List, Iterable{
         return new LinkedIterator();
     }
     private class LinkedIterator implements Iterator{
-        Node currentNode = head;
         private int index = 0;
         @Override
         public boolean hasNext() {

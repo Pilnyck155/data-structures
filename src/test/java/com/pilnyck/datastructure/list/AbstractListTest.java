@@ -4,8 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.Iterator;
-
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -50,10 +48,8 @@ public abstract class AbstractListTest {
         list.add("A");
         list.add("C");
         list.add("D");
-        System.out.println(list.toString());
 
         list.add("B", 1);
-        System.out.println(list.toString());
 
         assertEquals("B", list.get(1));
     }
@@ -195,14 +191,12 @@ public abstract class AbstractListTest {
     @Test
     public void testSizeOnEmptyWorkCorrectly(){
 
-
         assertEquals(0, list.size());
     }
 
     @DisplayName("test return true on empty list")
     @Test
     public void testReturnTrueWhenListIsEmpty(){
-
 
         assertTrue(list.isEmpty());
     }
@@ -311,22 +305,5 @@ public abstract class AbstractListTest {
         list.add("D");
 
         System.out.println(list.toString());
-    }
-
-
-    @DisplayName("test list iterator work correctly")
-    @Test
-    public void testIterator(){
-        LinkedList linkedList = new LinkedList();
-        linkedList.add("A");
-        linkedList.add("B");
-        linkedList.add("C");
-        linkedList.add("D");
-        Iterator iterator = linkedList.iterator();
-        while (iterator.hasNext()){
-            Object o = iterator.next();
-            System.out.println(o);
-        }
-        //System.out.println(list.toString());
     }
 }

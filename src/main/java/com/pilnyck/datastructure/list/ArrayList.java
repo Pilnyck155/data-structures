@@ -133,12 +133,10 @@ public class ArrayList implements List, Iterable{
 
     public String toString(){
         StringJoiner stringJoiner = new StringJoiner("," , "[", "]");
-        //ТУТ МАЄ БУТИ ВАШ ІТЕРАТОР
-        ArrayIterator arrayIterator = new ArrayIterator();
-
-
-        for (int i = 0; i <size(); i++) {
-            stringJoiner.add(arrayList[i].toString());
+        for (Object obj: this) {
+            try {
+                stringJoiner.add(obj.toString());
+            }catch (NullPointerException exception){}
         }
         return stringJoiner.toString();
     }
